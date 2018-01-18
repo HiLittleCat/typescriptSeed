@@ -14,8 +14,8 @@ export default (CFG, ENV) => {
     const Logger = log4js.getLogger('service');
     const AccessLogger = log4js.getLogger('access');
 
-    //const { Mongo, MongoC } = MongoLib(CFG);
-    //const Redis = RedisLib(CFG);
+    const { Mongo, MongoC } = MongoLib(CFG);
+    const Redis = RedisLib(CFG);
 
     /**
      * 全局变量，各种公共资源在这里定义
@@ -26,9 +26,9 @@ export default (CFG, ENV) => {
         Logger,
         AccessLogger,
         ENV: ENV,
-        // Mongo,
-        // MongoC,
-        // Redis,
+        Mongo,
+        MongoC,
+        Redis,
         Util,
         ...ERROR,
         ...Decorators

@@ -28,8 +28,8 @@ export default {
     },
     redis: {
         host: '127.0.0.1',
-        auth: '',
-        port: 6379,
+        auth: '123456',
+        port: 6699,
         maxclients: 10,
         minclients: 5,
         defaultExpire: 3600  //默认缓存一小时
