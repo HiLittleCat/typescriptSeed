@@ -18,7 +18,7 @@ export default class {
      * @apiSuccess {json} 返回用户信息.
      */
     @Post('/sign')
-    signMobile( @Body() mobile: string, password: string) {
+    signMobile( @Body() mobile: string, @Body() password: string) {
         if (!validator.isMobilePhone(mobile, 'zh-CN')) {
             return new CheckError('手机号码不正确');
         }
