@@ -12,7 +12,7 @@ export default class {
 
     /**
      * @api {post} /user/mobile 创建用户
-     * @apiName createUser
+     * @apiName signMobile
      * @apiGroup User
      *
      * @apiSuccess {json} 返回用户信息.
