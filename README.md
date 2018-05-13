@@ -6,8 +6,24 @@
 gulp watch
 ```
 ### 直接启动方式
+
+#### 编译
 ```
 gulp compile
 
+```
+
+#### 开发环境启动
+```
 node dist/boot/development.js  
+```
+
+#### 测试环境启动
+```
+node dist/boot/testing.js
+```
+
+#### 生产环境启动
+```
+node dist/boot/production.js  
 ```
