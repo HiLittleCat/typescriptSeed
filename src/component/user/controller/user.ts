@@ -11,14 +11,16 @@ export default class {
     }
 
     /**
-     * @api {post} /user/mobile 创建用户
-     * @apiName signMobile
-     * @apiGroup User
-     *
-     * @apiSuccess {json} 返回用户信息.
+     * @api {post} /user/sign 用户注册
+     * @apiDescription 用户注册
+     * @apiName sign
+     * @apiGroup user
+     * @apiParam {string} mobile 手机号
+     * @apiParam {string} password 密码
+     * @apiVersion 1.0.0
      */
     @Post('/sign')
-    signMobile( @Body() mobile: string, @Body() password: string) {
+    signMobile(@Body() mobile: string, @Body() password: string) {
         if (!validator.isMobilePhone(mobile, 'zh-CN')) {
             return new CheckError('手机号码不正确');
         }
