@@ -3,13 +3,14 @@
 
 ### 生成文档，使用apidoc
 
-####官网 http://apidocjs.com
+#### 官网 http://apidocjs.com
 
-####安装
+#### 安装
 ```
 npm install apidoc -g
 ```
-####生成文档命令
+
+#### 生成文档命令
 ```
 apidoc
 ```
