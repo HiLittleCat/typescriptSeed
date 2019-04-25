@@ -2,8 +2,7 @@
   "name": "koa2-demo",
   "version": "0.1.0",
   "scripts": {
-    "start": "./node_modules/.bin/nodemon dist/boot/test",
-    "pm2": "pm2 start dist/boot/test"
+    "test": "mocha test/**/*.js"
   },
   "engines": {
     "node": ">=7"
