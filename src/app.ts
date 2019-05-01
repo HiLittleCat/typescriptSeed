@@ -1,7 +1,9 @@
-const convert = require('koa-convert');
-const compress = require('koa-compress');
 const conditional = require('koa-conditional-get');
+const helmet = require('koa-helmet');
 const etag = require('koa-etag');
+const koaStatic = require('koa-static')
+const koaSession = require('koa-session')
+
 import 'reflect-metadata';
 
 /**
@@ -69,14 +71,11 @@ export default (CFG, ENV) => {
     /**
      * 第三方中间件
      */
-    app.use(compress({
-        threshold: 2048,
-        flush: require('zlib').Z_SYNC_FLUSH
-      }))
-    app.use(convert(conditional()));
-    app.use(convert(etag()));
-    app.use(convert(require('koa-static')(__dirname + '/../public')));
-    app.use(convert(require('koa-session'))(CFG.session, app));
+    app.use(helmet());
+    app.use(conditional());
+    app.use(etag());
+    app.use(koaStatic(__dirname + '/../public'));
+    app.use(koaSession(CFG.session, app));
 
     /**
      * 启动应用
@@ -84,7 +83,7 @@ export default (CFG, ENV) => {
     app.listen(CFG.port);
     Logger.info(`app listening on ${CFG.port}, running on ${ENV}`);
 
-    app.on('error', function (err, ctx) {
+    app.on('error', function (err: object, ctx: object) {
         Logger.error('server error', err, ctx);
     });
 

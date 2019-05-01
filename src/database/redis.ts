@@ -39,14 +39,14 @@ export default function (CFG) {
 
     const Pool = genericPool.createPool(factory, opts);
 
-    const Cache_DB = 1;
+    const CacheDB = 1;
 
     const resourcePromise = Pool.acquire();
 
     const get = function (key) {
         return new Promise<string>((resolve, reject) => {
             resourcePromise.then(function (client) {
-                client.select(Cache_DB, function (err) {
+                client.select(CacheDB, function (err) {
                     if (err) {
                         Pool.release(client);
                         reject(err);
@@ -67,7 +67,7 @@ export default function (CFG) {
     const set = function (key, data, expire) {
         return new Promise((resolve, reject) => {
             resourcePromise.then(function (client) {
-                client.select(Cache_DB, function (err) {
+                client.select(CacheDB, function (err) {
                     if (err) {
                         Pool.release(client);
                         return reject(err);
@@ -103,7 +103,7 @@ export default function (CFG) {
     const del = function (key) {
         return new Promise<string>((resolve, reject) => {
             resourcePromise.then(function (client) {
-                client.select(Cache_DB, function (err) {
+                client.select(CacheDB, function (err) {
                     if (err) {
                         Pool.release(client);
                         reject(err);

@@ -15,20 +15,23 @@ export default {
         autoSchemaSync: true //生产环境要配置为false
     },
     mongoose: {
-        databaseUrl: '127.0.0.1/littlecat',
+        databaseUrl: 'mongodb://127.0.0.1:27017/littlecat',
         options: {
-            server: {
-                auto_reconnect: true,
-                poolSize: 5
-            },
+            auto_reconnect: true,
+            poolSize: 5,
             socketTimeoutMS: 10000,
             connectTimeoutMS: 10000,
+            useNewUrlParser: true,
+            useFindAndModify: false,
+            useCreateIndex: true,
+            autoIndex: true,
+            readPreference: 'secondaryPreferred',
             //replset: { rs_name: '' } 副本集配置
         }
     },
     redis: {
         host: '127.0.0.1',
-        auth: '123456',
+        auth: '',
         port: 6379,
         maxclients: 10,
         minclients: 5,

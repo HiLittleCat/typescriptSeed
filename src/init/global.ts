@@ -1,6 +1,8 @@
 import { RESOUCE } from '../resource/resource';
 import Util from '../lib/util';
 import * as ERROR from '../error/errors';
+import BizError from '../error/BizError';
+
 import MongoLib from '../database/mongo';
 import RedisLib from '../database/redis';
 import * as Decorators from '../decorator/decorators';
@@ -30,6 +32,7 @@ export default (CFG, ENV) => {
         MongoC,
         Redis,
         Util,
+        BizError,
         ...ERROR,
         ...Decorators
     })

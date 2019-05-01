@@ -1,4 +1,5 @@
 import { User } from '../model/index';
+
 export default class {
     /**
      * 注册用户
@@ -6,7 +7,7 @@ export default class {
      * @param {any} user 用户信息
      * @returns 
      */
-    createUser(user) {
+    createUser(user: object) {
         return new Promise((resolve, reject) => {
             User.create(user, (err, result) => {
                 if (err) {
@@ -25,7 +26,7 @@ export default class {
      * @param {string} mobile 手机号码
      * @returns 
      */
-    isMobileSign(mobile) {
+    isMobileSign(mobile: string) {
         return new Promise<any>((resolve, reject) => {
             User.count({ mobile }, (err, cnt) => {
                 if (err) {

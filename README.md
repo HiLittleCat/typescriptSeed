@@ -16,32 +16,28 @@ apidoc
 ```
 
 ### 热启动命令
+
 ```
-gulp watch
+npm run watch
 ```
 ### 直接启动方式
 
-#### 编译
-```
-gulp compile
-```
-
 #### 开发环境启动
 ```
-node dist/boot/development.js  
+npm run env_dev  
 ```
 
 #### 测试环境启动
 ```
-node dist/boot/testing.js
+npm run env_test  
 ```
 
 #### 生产环境启动
 ```
-node dist/boot/production.js  
+npm run env_prd 
 ```
 
 #### 测试命令
 ```
-mocha test/**/*.js
+npm test
 ```

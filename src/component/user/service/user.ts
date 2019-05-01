@@ -1,5 +1,4 @@
 import { Service } from 'typedi';
-import assert = require('assert');
 import Dao from '../dao/index';
 
 @Service()
@@ -19,7 +18,7 @@ export default class {
     async signMobile(mobile: string, password: string) {
         let bool = await this.dao.isMobileSign(mobile);
         if (bool) {
-            throw new ResourceExistError('手机号码已注册过');
+            throw new BusinessError(BizError.No10000);
         }
         password = Util.toMD5(password);
         return this.dao.createUser({ mobile, password });

@@ -1,18 +1,20 @@
-
-declare const RESOUCE
-
-declare const Config
-
-declare const Logger
-
-declare const AccessLogger
-
-declare const ENV
-
+declare const RESOUCE: any
+declare const Config: any
+declare const Logger: any
+declare const AccessLogger: any
+declare const ENV: any
 declare const Mongo
+declare const MongoC: any
+declare const Redis: any
+declare const AppSession: any
 
-declare const MongoC
-
+declare const BizError: any
+declare class BusinessError {
+    constructor(message: string)
+}
+declare class ValidationError {
+    constructor(message: string)
+}
 declare class Util {
     /**
      * 字符串转为对应的code
@@ -43,9 +45,3 @@ declare class Util {
      */
     static undecodeBase64(str: string): string
 }
-
-declare const ResourceNotFoundError, ResourceExistError, CheckError
-
-declare const Redis
-
-declare const AppSession

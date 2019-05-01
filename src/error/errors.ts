@@ -1,23 +1,21 @@
 /**
  * 自定义Error
  */
-import {HttpError} from 'routing-controllers';
+import { HttpError } from 'routing-controllers';
 
-export class ResourceNotFoundError extends HttpError {
-    constructor(message) {
-        super(410, message);
+export class BusinessError extends HttpError {
+    constructor(message: string) {
+        super(400, message);
+        this.name = 'BusinessError';
+        this.stack = undefined;
     }
 }
 
-export class ResourceExistError extends HttpError {
-    constructor(message) {
+export class ValidationError extends HttpError {
+    constructor(message: string) {
         super(406, message);
-    }
-}
-
-export class CheckError extends HttpError {
-    constructor(message) {
-        super(406, message);
+        this.name = 'ValidationError';
+        this.stack = undefined;
     }
 }
 

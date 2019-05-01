@@ -1,5 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
+const db = require('../config/db');
+const mongo = db == undefined || db.mongoose == undefined || db.mongoose.databaseUrl == Config.mongoose.databaseUrl ? Mongo : mongoose.createConnection(db.mongoose.databaseUrl, db.mongoose.options);
 
 const userSchema = new Schema({
     type: {
@@ -11,7 +13,7 @@ const userSchema = new Schema({
     birthday: String, //生日
     mobile: {
         type: String,
-        index: 'hashed'
+        index: 'hashed',
     }, //手机号码
     password: String, //用户密码，md5加密保存
     idType: Number, //身份标识类型
@@ -21,4 +23,6 @@ const userSchema = new Schema({
         default: Date.now
     }
 }, { read: 'secondaryPreferred' });
-export const User = Mongo.model('user', userSchema, 'user');
+
+export const User = mongo.model('user', userSchema, 'user');
+

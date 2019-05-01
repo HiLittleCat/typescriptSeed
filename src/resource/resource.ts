@@ -1,1 +1,3 @@
-export const RESOUCE = Object.freeze({AppSession: 'AppSession'});
+export const RESOUCE = Object.freeze({
+    AppSession: 'AppSession',
+});

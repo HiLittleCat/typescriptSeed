@@ -20,15 +20,16 @@ export default class {
      * @apiVersion 1.0.0
      */
     @Post('/sign')
-    signMobile(@Body() mobile: string, @Body() password: string) {
+    signMobile(@Body() user: any) {
+        let mobile = user.mobile, password = user.password;
         if (!validator.isMobilePhone(mobile, 'zh-CN')) {
-            return new CheckError('手机号码不正确');
+            return new ValidationError('手机号码不正确');
         }
         if (!password || password.length < 6) {
-            return new CheckError('密码不符合要求');
+            return new ValidationError('密码不符合要求');
         }
         return this.serv.signMobile(mobile, password);
     }
-    
+
 }
 
