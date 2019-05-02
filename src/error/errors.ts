@@ -2,12 +2,12 @@
  * 自定义Error
  */
 import { HttpError } from 'routing-controllers';
+import { isNullOrUndefined } from 'util';
 
 export class BusinessError extends HttpError {
     constructor(message: string) {
         super(400, message);
         this.name = 'BusinessError';
-        this.stack = undefined;
     }
 }
 

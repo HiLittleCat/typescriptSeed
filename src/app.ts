@@ -1,10 +1,12 @@
+import 'reflect-metadata';
+
 const conditional = require('koa-conditional-get');
 const helmet = require('koa-helmet');
 const etag = require('koa-etag');
 const koaStatic = require('koa-static')
 const koaSession = require('koa-session')
+const bodyparser = require('koa-bodyparser')
 
-import 'reflect-metadata';
 
 /**
  * 路由框架
@@ -74,6 +76,7 @@ export default (CFG, ENV) => {
     app.use(helmet());
     app.use(conditional());
     app.use(etag());
+    app.use(bodyparser());
     app.use(koaStatic(__dirname + '/../public'));
     app.use(koaSession(CFG.session, app));
 

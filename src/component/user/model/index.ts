@@ -26,3 +26,4 @@ const userSchema = new Schema({
 
 export const User = mongo.model('user', userSchema, 'user');
 
+

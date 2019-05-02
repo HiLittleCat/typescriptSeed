@@ -13,7 +13,7 @@ gulp.task('compile', function () {
         .pipe(gulp.dest('dist'));
 });
 
-gulp.task('watch', ['compile'], function () {
+gulp.task('watch', gulp.series('compile', function () {
     return nodemon({
         script: 'dist/boot/development.js',  // 服务的启动文件
         watch: 'src',    // 源代码目录
@@ -26,4 +26,4 @@ gulp.task('watch', ['compile'], function () {
         // 必须开启debug模式
         exec: 'node --inspect'
     });
-});
+}));

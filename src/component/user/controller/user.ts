@@ -1,7 +1,7 @@
-import { ContentType, JsonController, Param, Body, Get, Post, Put, Delete, UploadedFile, QueryParam } from 'routing-controllers';
+import { UseBefore, ContentType, JsonController, Param, Body, Get, Post, Put, Delete, UploadedFile, QueryParam } from 'routing-controllers';
 import { Service } from 'typedi';
 import Serv from '../service/user';
-const validator = require('validator');
+import validator from 'validator';
 
 @Service()
 @JsonController('/user')
@@ -19,17 +19,17 @@ export default class {
      * @apiParam {string} password 密码
      * @apiVersion 1.0.0
      */
+
     @Post('/sign')
     signMobile(@Body() user: any) {
         let mobile = user.mobile, password = user.password;
         if (!validator.isMobilePhone(mobile, 'zh-CN')) {
-            return new ValidationError('手机号码不正确');
+            throw new ValidationError('手机号码不正确');
         }
-        if (!password || password.length < 6) {
-            return new ValidationError('密码不符合要求');
+        if (!validator.isLength(password, { min: 8, max: 30 })) {
+            throw new ValidationError('密码不符合要求');
         }
         return this.serv.signMobile(mobile, password);
     }
-
 }
 

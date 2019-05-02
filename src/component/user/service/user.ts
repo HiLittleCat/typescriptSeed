@@ -1,10 +1,10 @@
 import { Service } from 'typedi';
-import Dao from '../dao/index';
+import { User } from '../model/index';
 
 @Service()
 export default class {
 
-    constructor(private dao: Dao) {
+    constructor() {
     }
 
     /**
@@ -16,12 +16,11 @@ export default class {
      * @returns 
      */
     async signMobile(mobile: string, password: string) {
-        let bool = await this.dao.isMobileSign(mobile);
-        if (bool) {
+        let cnt = await User.countDocuments({ mobile })
+        if (cnt > 0) {
             throw new BusinessError(BizError.No10000);
         }
         password = Util.toMD5(password);
-        return this.dao.createUser({ mobile, password });
+        return await User.create({ mobile, password });
     }
-
 }

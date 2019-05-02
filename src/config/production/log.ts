@@ -1,6 +1,6 @@
 /**
  * 日志配置
- * 开发环境直接输出到控制台，不写入文件
+ * 
  */
 export default Object.freeze({
     log4js: {

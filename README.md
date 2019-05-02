@@ -5,9 +5,10 @@
 
 #### 官网 http://apidocjs.com
 
-#### 安装
+#### 安装全局依赖
 ```
 npm install apidoc -g
+npm install gulp -g
 ```
 
 #### 生成文档命令
