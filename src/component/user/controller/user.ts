@@ -1,9 +1,8 @@
 import { UseBefore, ContentType, JsonController, Param, Body, Get, Post, Put, Delete, UploadedFile, QueryParam } from 'routing-controllers';
-import { Service } from 'typedi';
+import { Service, Container } from 'typedi';
 import Serv from '../service/user';
 import validator from 'validator';
 
-@Service()
 @JsonController('/user')
 export default class {
 

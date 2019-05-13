@@ -21,6 +21,7 @@ export default class {
             throw new BusinessError(BizError.No10000);
         }
         password = Util.toMD5(password);
-        return await User.create({ mobile, password });
+        let user = await User.create({ mobile, password });
+        return user._id;
     }
 }
